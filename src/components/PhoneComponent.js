@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { buyPhone } from "../redux/phone/actionPhone";
 
 function PhoneComponent(props) {
     console.log(props.phones);
@@ -9,7 +10,7 @@ function PhoneComponent(props) {
             <p>
                 Disponibilité :<span id="count"> {props.phones}</span>
             </p>
-            <button>Acheter</button>
+            <button onClick={() => props.buyPhone()}>Acheter</button>
         </div>
     );
 }
@@ -20,4 +21,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(PhoneComponent);
+const mapDispatchToprops = (dispatch) => {
+    return {
+        buyPhone: () => dispatch(buyPhone()),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToprops)(PhoneComponent);
