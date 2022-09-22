@@ -1,9 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { buyPhone } from "../redux/phone/actionPhone";
 
 function PhoneComponent(props) {
     const phones = useSelector((state) => state.phones);
+    const dispatch = useDispatch();
 
     return (
         <div className="container">
@@ -11,16 +12,10 @@ function PhoneComponent(props) {
             <p>
                 Disponibilité :<span id="count"> {phones}</span>
             </p>
-            <button>Acheter</button>
+            <button onClick={() => dispatch(buyPhone())}>Acheter</button>
         </div>
     );
 }
-
-const mapDispatchToprops = (dispatch) => {
-    return {
-        buyPhone: () => dispatch(buyPhone()),
-    };
-};
 
 export default PhoneComponent;
 
