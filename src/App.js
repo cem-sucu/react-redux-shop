@@ -1,11 +1,15 @@
 import "./App.css";
 import PhoneComponent from "./components/PhoneComponent";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
     return (
-        <div className="section-one">
-            <PhoneComponent />
-        </div>
+        <Provider store={store}>
+            <div className="section-one">
+                <PhoneComponent />
+            </div>
+        </Provider>
     );
 }
 
